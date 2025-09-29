@@ -1,7 +1,5 @@
-#include <stdio.h>
+#include <stdio.h>#include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#include <time.h>
 #include <unistd.h>
 
 int main() {
@@ -13,10 +11,8 @@ int main() {
     char confirm;
     int rounds;
     int player;
-    int computer;
     int pScore;
     int cScore;
-
 
     do {
         printf("\n------ LOGIN --------------\n");
@@ -75,7 +71,8 @@ int main() {
                     continue;
                 }
 
-                computer = rand() % 3 + 1;
+                
+                int computer = 1;  
 
                 const char *moves[] = {"Rock", "Paper", "Scissors"};
                 printf("Computer chose %s\n", moves[computer - 1]);
@@ -122,4 +119,5 @@ int main() {
 
     return 0;
 }
+
 
