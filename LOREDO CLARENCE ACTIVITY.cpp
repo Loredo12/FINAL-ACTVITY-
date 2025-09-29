@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
 
 int main() {
     char username[20], password[20];
@@ -7,14 +10,12 @@ int main() {
     char correctPass[] = "admin123";
     int attempts = 3;
     char choice;
-	char confirm;
+    char confirm;
     int rounds;
-	int  player;
-	int computer;
-	int pScore;
-	int cScore;
-
-
+    int player;
+    int computer;
+    int pScore;
+    int cScore;
 
 
     do {
@@ -29,6 +30,12 @@ int main() {
 
         if (strcmp(username, correctUser) == 0 && strcmp(password, correctPass) == 0) {
             printf("\nLogin successful! Welcome, %s.\n", username);
+            printf("\nLoading");
+            for (int i = 0; i < 3; i++) {
+                sleep(1);
+                printf(".");
+            }
+            printf("\n\n");
             break;
         } else {
             attempts--;
@@ -41,8 +48,6 @@ int main() {
         }
     } while (attempts > 0);
 
-
-
     do {
         printf("\n--- ROCK PAPER SCISSOR GAME----\n");
         printf("|          (S)tart              |\n");
@@ -50,12 +55,9 @@ int main() {
         printf("|          (E)xit               |\n");
         printf("---------------------------------\n");
         printf("Enter choice: ");
-        scanf(" %c", &choice); 
+        scanf(" %c", &choice);
 
         if (choice == 's' || choice == 'S') {
-        	
-        	
-        	
             pScore = 0;
             cScore = 0;
 
@@ -73,9 +75,7 @@ int main() {
                     continue;
                 }
 
-
-
-
+                computer = rand() % 3 + 1;
 
                 const char *moves[] = {"Rock", "Paper", "Scissors"};
                 printf("Computer chose %s\n", moves[computer - 1]);
@@ -92,11 +92,6 @@ int main() {
                     cScore++;
                 }
             }
-
-
-
-
-
 
             printf("\nFinal Scores:\n");
             printf("Player: %d\n", pScore);
